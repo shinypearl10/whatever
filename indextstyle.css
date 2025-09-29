@@ -1,0 +1,165 @@
+/* Tetapan Font dan Warna Utama */
+body { font-family: 'Inter', sans-serif; background-color: #f0f4f8; }
+
+/* Kelas Bubble Utama */
+.bubble {
+    width: 110px;
+    height: 110px;
+    border-radius: 9999px; /* Bulat */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    font-weight: bold;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s, box-shadow 0.2s;
+    cursor: pointer;
+    position: absolute; /* Penting untuk mind map */
+    z-index: 30; /* PENTING: Bubble di atas garis (SVG z-index 10) */
+}
+
+/* HOVER Generik: Hanya berlaku pada .bubble yang TIDAK mempunyai transform asal */
+.bubble:hover {
+    transform: scale(1.1);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Kelas Bubble Tengah - Kekal Stabil di Pusat */
+.center-bubble {
+    width: 140px;
+    height: 140px;
+    border-radius: 9999px;
+    background-color: #1e40af; /* Biru Tua */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    z-index: 40; 
+    /* Penempatan Tengah yang Stabil */
+    top: 50%; 
+    left: 50%; 
+    transform: translate(-50%, -50%);
+    font-size: 1.5rem;
+    font-weight: bold;
+    cursor: pointer;
+    position: absolute;
+}
+
+/* Gaya Hover Tambahan untuk Bubble Tengah - HANYA tukar warna teks */
+.center-bubble:hover {
+    color:blanchedalmond;
+    /* Kekalkan transform dan box-shadow statik */
+    transform: translate(-50%, -50%); 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+}
+
+/* FIX UNTUK BUBBLE PINGGIR YANG MENGGUNAKAN TRANSFORM ASAL */
+/* Pastikan scaling (scale(1.1)) digabungkan dengan transform asal */
+.haiwan-layout #bubble-haiwan-5:hover { 
+    transform: translateY(-50%) scale(1.1); /* Menggabungkan translateY(-50%) + scale(1.1) */
+}
+.sains-layout #bubble-sains-1:hover { 
+    transform: translateX(-50%) scale(1.1); /* Menggabungkan translateX(-50%) + scale(1.1) */
+}
+.sains-layout #bubble-sains-4:hover { 
+    transform: translateX(-50%) scale(1.1); /* Menggabungkan translateX(-50%) + scale(1.1) */
+}
+
+/* --- Mind Map Layout (Posisi) --- */
+.mind-map-container {
+    position: relative;
+    width: 100%;
+    height: 80vh; 
+    min-height: 400px;
+    max-width: 900px;
+    margin: 2rem auto;
+    border-radius: 1rem;
+    background-color: white;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+}
+
+/* SVG untuk Garis Sambungan */
+.mind-map-container svg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10; 
+    pointer-events: none; 
+}
+
+/* Penempatan Bubble Haiwan */
+.haiwan-layout #bubble-haiwan-1 { top: 4%; left: 44%; background-color: #ef4444; }
+.haiwan-layout #bubble-haiwan-2 { top: 30%; right: 10%; background-color: #f97316; } 
+.haiwan-layout #bubble-haiwan-3 { bottom:5%; right: 25%; background-color: #eab308; } 
+.haiwan-layout #bubble-haiwan-4 { bottom: 5%; left: 25%; background-color: #22c55e; } 
+.haiwan-layout #bubble-haiwan-5 { top: 40%; left: 10%; transform: translateY(-50%); background-color: #0ea5e9; } 
+
+/* Penempatan Bubble Sains */
+.sains-layout #bubble-sains-1 { top: 5%; left: 50%; transform: translateX(-50%); background-color: #ef4444; } 
+.sains-layout #bubble-sains-2 { top: 15%; right: 10%; background-color: #f97316; } 
+.sains-layout #bubble-sains-3 { bottom: 15%; right: 10%; background-color: #eab308; } 
+.sains-layout #bubble-sains-4 { bottom: 5%; left: 50%; transform: translateX(-50%); background-color: #22c55e; } 
+.sains-layout #bubble-sains-5 { bottom: 15%; left: 10%; background-color: #0ea5e9; } 
+.sains-layout #bubble-sains-6 { top: 15%; left: 10%; background-color: #a855f7; } 
+
+
+/* --- Responsiveness (Tablet dan Handphone) --- */
+@media (max-width: 768px) {
+    .bubble { width: 90px; height: 90px; font-size: 0.75rem; }
+    .center-bubble { width: 115px; height: 115px; font-size: 1.25rem; }
+    .mind-map-container { height: 70vh; max-width: 95%; }
+
+    /* Penyesuaian posisi untuk layar kecil */
+    .haiwan-layout #bubble-haiwan-1 { top: 5%; left: 50%; transform: translateX(-50%); }
+    .haiwan-layout #bubble-haiwan-2 { top: 25%; right: 5%; }
+    .haiwan-layout #bubble-haiwan-3 { bottom: 10%; left: 75%; transform: translateX(-50%); } 
+    .haiwan-layout #bubble-haiwan-4 { bottom: 10%; left: 15%; } 
+    .haiwan-layout #bubble-haiwan-5 { top: 35%; left: 5%; transform: translateY(-50%); } /* Reset transform, posisi dikawal oleh top/left */
+
+    .sains-layout #bubble-sains-1 { top: 5%; left: 50%; transform: translateX(-50%); }
+    .sains-layout #bubble-sains-2 { top: 15%; right: 10%; }
+    .sains-layout #bubble-sains-3 { top: 65%; right: 10%; } 
+    .sains-layout #bubble-sains-4 { bottom: 5%; left: 50%; transform: translateX(-50%); }
+    .sains-layout #bubble-sains-5 { bottom: 15%; left: 10%; }
+    .sains-layout #bubble-sains-6 { top: 15%; left: 10%; }
+
+    /* FIX HOVER UNTUK PERANTI MUDAH ALIH */
+    .haiwan-layout #bubble-haiwan-1:hover { 
+        transform: translateX(-50%) scale(1.1);
+    }
+    .haiwan-layout #bubble-haiwan-3:hover { 
+        transform: translateX(-50%) scale(1.1);
+    }
+    .haiwan-layout #bubble-haiwan-5:hover { 
+        transform: translateY(-50%) scale(1.1);
+    }
+    .sains-layout #bubble-sains-1:hover { 
+        transform: translateX(-50%) scale(1.1);
+    }
+    .sains-layout #bubble-sains-4:hover { 
+        transform: translateX(-50%) scale(1.1);
+    }
+
+    /* Modal pada layar kecil */
+    #info-modal-content { margin: 15% auto; width: 90%;}
+}
+
+/* --- Gaya Modal (Pop-up) --- */
+.modal {
+    display: none; 
+    position: fixed;
+    z-index: 100; 
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.6); 
+    backdrop-filter: blur(5px);
+}
+
+#info-modal-content { margin: 10% auto;}

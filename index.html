@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pearl's Collections</title>
+    <link rel="icon" type="image/png" href="lamp.png">
+    <!-- Muat turun Tailwind CSS CDN untuk reka bentuk responsif -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="indextstyle.css">
+</head>
+<body class="min-h-screen">
+
+    <!-- Header & Navigasi -->
+    <header class="bg-gray-800 shadow-lg sticky top-0 z-50">
+        <nav class="max-w-4xl mx-auto p-4 flex justify-center space-x-4">
+            <button id="nav-haiwan" data-map="haiwan" class="nav-btn bg-emerald-500 hover:bg-emerald-600 text-white font-semibold py-2 px-6 rounded-lg transition duration-150">
+                Haiwan
+            </button>
+            <button id="nav-sains" data-map="sains" class="nav-btn bg-emerald-500 hover:bg-emerald-600 text-white font-semibold py-2 px-6 rounded-lg transition duration-150">
+                Sains
+            </button>
+        </nav>
+    </header>
+
+    <!-- Konten Utama Mind Map -->
+    <main id="main-content" class="p-4 md:p-8">
+        
+        <!-- Mind Map Haiwan -->
+        <div id="haiwan-map-container" class="mind-map-container haiwan-layout hidden">
+            <!-- SVG untuk Garis (Akan dijana oleh JavaScript) -->
+            <svg id="svg-haiwan"></svg>
+            
+            <div class="center-bubble">Haiwan</div>
+            
+            <div id="bubble-haiwan-1" class="bubble" data-info-id="info-mamalia">Mamalia</div>
+            <div id="bubble-haiwan-2" class="bubble" data-info-id="info-reptilia">Reptilia</div>
+            <div id="bubble-haiwan-3" class="bubble" data-info-id="info-aves">Aves</div>
+            <div id="bubble-haiwan-4" class="bubble" data-info-id="info-amfibia">Amfibia</div>
+            <div id="bubble-haiwan-5" class="bubble" data-info-id="info-ikan">Ikan</div>
+        </div>
+
+        <!-- Mind Map Sains -->
+        <div id="sains-map-container" class="mind-map-container sains-layout hidden">
+            <!-- SVG untuk Garis (Akan dijana oleh JavaScript) -->
+            <svg id="svg-sains"></svg>
+            
+            <div class="center-bubble">Sains</div>
+            
+            <div id="bubble-sains-1" class="bubble" data-info-id="info-fizik">Fizik</div>
+            <div id="bubble-sains-2" class="bubble" data-info-id="info-kimia">Kimia</div>
+            <div id="bubble-sains-3" class="bubble" data-info-id="info-biologi">Biologi</div>
+            <div id="bubble-sains-4" class="bubble" data-info-id="info-astronomi">Astronomi</div>
+            <div id="bubble-sains-5" class="bubble" data-info-id="info-geologi">Geologi</div>
+            <div id="bubble-sains-6" class="bubble" data-info-id="info-matematik">Matematik</div>
+        </div>
+
+    </main>
+
+    <!-- Pop-up Informasi (Modal) -->
+    <div id="info-modal" class="modal">
+        <div id="info-modal-content" class="bg-white p-6 rounded-xl shadow-2xl relative max-w-lg mx-auto transform transition-all duration-300">
+            <button id="close-modal" class="close-button text-gray-500 hover:text-gray-900 text-3xl font-bold absolute top-3 right-5">&times;</button>
+            <h3 id="modal-title" class="text-2xl font-extrabold text-gray-800 mb-3 border-b pb-2"></h3>
+            <p id="modal-body" class="text-gray-600 leading-relaxed"></p>
+        </div>
+    </div>
+
+    <script src="indexscript.js"></script>
+
+</body>
+</html>
